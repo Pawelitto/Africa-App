@@ -25,6 +25,7 @@ struct ContentView: View {
                         AnimalListItemView(animal: animal)}
                     } //: LINK
             } //: LIST
+            .listStyle(InsetListStyle())
             .navigationBarTitle("Africa", displayMode: .large)
         } //: NAVIGATION
     }
