@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct ExternalWeblinkView: View {
+    
+    let animal: Animal
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GroupBox {
+            HStack {
+                Image(systemName: "globe")
+                Text("Wikipedia")
+                Spacer()
+                
+                Group {
+                    Image(systemName: "arrow.up.right.square")
+                    
+                    Link(animal.name, destination: (URL(string: animal.link) ?? URL(string: "https://wikipedia.org"))!)
+                }
+                .foregroundColor(.accentColor)
+            } //: HSTACK
+        } //: BOX
     }
 }
 
-#Preview {
-    ExternalWeblinkView()
+struct ExternalWeblink_Previews: PreviewProvider {
+    static let animals: [Animal] = Bundle.main.decode("animals.json")
+    
+    static var previews: some View{
+        ExternalWeblinkView(animal: animals[0])
+            .previewLayout(.sizeThatFits)
+    }
 }
